@@ -311,7 +311,6 @@ var app = new Vue({
                 }
             }
             //mantissaBinary = mantissaBinary.slice(0,1) + "." + mantissaBinary.slice(1);
-            console.log(mantissaDecimal);
             if (countDecimals(mantissaDecimal) >= 8) {
                 mantissaDecimal = mantissaDecimal.toFixed(8);
             }
@@ -330,7 +329,6 @@ var app = new Vue({
                     break;
                 case 2:
                     //DECIMAL TO BINARY - MANTISSA
-                    console.log()
                     app.questionValue = "The decimal value " + mantissaDecimal.toString() + " is stored using normalised two's complement floating point binary. If the exponent is " + exponentBinary + ", what is the mantissa?";
                     app.answerValue = mantissaBinary;
                     break;
@@ -365,7 +363,6 @@ var app = new Vue({
             else {
                 mantissaBinary = "0000000" + byteValue.toString(2);
             }
-            console.log(mantissaBinary);
             mantissaDecimal = 0;
             for (var i = 0; i < 8; i++) {
                 if (mantissaBinary.charAt(i) == "1") {
@@ -378,7 +375,6 @@ var app = new Vue({
                 }
             }
             mantissaBinary = mantissaBinary.slice(0,4) + "." + mantissaBinary.slice(4);
-            console.log(mantissaDecimal);
             if (countDecimals(mantissaDecimal) >= 8) {
                 mantissaDecimal = mantissaDecimal.toFixed(8);
             }
