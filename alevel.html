@@ -3,7 +3,7 @@
     <head>
         <title>BCKLY Questions</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="theme.css">
+        <link rel="stylesheet" type="text/css" href="questionPage.css">
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
     <body>
@@ -17,6 +17,7 @@
                         <h5 id="conversion" v-show="inputActive">Question {{ questionNumber }} </h5>
                         <p id="question"> {{ questionValue }} </p>
                         <input autocomplete="off" id="answer" v-model="attempt" placeholder="Answer" onclick="disablePlaceholder()" v-show="inputActive">
+                        <p id="extraHelp" v-show="inputActive"> {{ extraHelp }} </p>
                     </section>
                 </transition>
                 <transition name="fade">
@@ -40,7 +41,7 @@
                         </label>
                         <h5 class="subtitle">What is this?</h5>
                         <p class="text">This website creates data representation questions for A-Level Computer Science students studying the AQA specification. The checkboxes above allow you to choose which questions to answer. Use the link at the top left of the window to get back to the questions.</p>
-                        <a href="index.html"><h5>GCSE Questions</h5></a>
+                        <a href="gcse.html"><p style="font-size: 0.5em;"><i>GCSE Questions</i></p></a>
                     </section>
                 </transition>
             </main>

@@ -13,6 +13,8 @@ var obj = {
     //BINARY CONVERSION VARIABLES
     questionValue: 'N/A',
     answerValue: 'N/A',
+    questionType: '',
+    extraHelp: '',
     inputActive: true,
     attempt: '',
     questionNumber: '1',
@@ -321,6 +323,7 @@ var app = new Vue({
                     //BINARY TO DECIMAL
                     app.questionValue = "Convert " + mantissaBinary + " to decimal. The value is stored using two's complement floating point binary and has an exponent of " + exponentBinary + ".";
                     app.answerValue = mantissaDecimal.toString();
+                    app.extraHelp = "If your answer is longer than 8 decimal places, round it to eight."
                     break;
                 case 1:
                     //DECIMAL TO BINARY - EXPONENT
@@ -331,6 +334,7 @@ var app = new Vue({
                     //DECIMAL TO BINARY - MANTISSA
                     app.questionValue = "The decimal value " + mantissaDecimal.toString() + " is stored using normalised two's complement floating point binary. If the exponent is " + exponentBinary + ", what is the mantissa?";
                     app.answerValue = mantissaBinary;
+                    app.extraHelp = "Give your answer as a byte and without a binary point."
                     break;
             }  
                       
@@ -390,6 +394,7 @@ var app = new Vue({
                     //DECIMAL TO BINARY
                     app.questionValue = "Convert the decimal value " + mantissaDecimal + " to a byte of two's complement fixed point binary.";
                     app.answerValue = mantissaBinary;
+                    app.extraHelp = "Give your answer as a byte with the binary point included."
                     break;
             }  
         },
@@ -444,6 +449,7 @@ var app = new Vue({
                     //DECIMAL TO BINARY
                     app.questionValue = "Convert the decimal value " + mantissaDecimal + " to a byte of two's complement binary.";
                     app.answerValue = mantissaBinary;
+                    app.extraHelp = "Give your answer as a byte.";
                     break;
             }  
         },
@@ -473,6 +479,7 @@ var app = new Vue({
                     //DECIMAL TO BINARY
                     app.questionValue = 'Convert the decimal value ' + decimal + ' to unsigned binary.';
                     app.answerValue = binary;
+                    app.extraHelp = "Give your answer with no leading zeroes.";
                     break;
                 case 3:
                     //DECIMAL TO HEXADECIMAL
@@ -488,6 +495,7 @@ var app = new Vue({
                     //HEXADECIMAL TO BINARY
                     app.questionValue = 'Convert the hexadecimal value ' + hexadecimal + ' to unsigned binary.';
                     app.answerValue = binary;
+                    app.extraHelp = "Give your answer with no leading zeroes.";
                     break;
             }
         },
@@ -522,8 +530,11 @@ var app = new Vue({
         generateQuestion: function () {
             //REPOPULATE THE AVAILABLE QUESTION TYPES FROM THE QUESTION TYPES THAT ARE CURRENTLY SELECTED
             app.repopulateActiveQuestions();
+            //RESET THE ADDITIONAL HELP TO EMPTY
+            app.extraHelp = "";
             //CHOOSE RANDOMLY FROM ARRAY CONTAINING ACTIVE QUESTION TYPES
             x = app.activeQuestions[Math.floor(Math.random() * app.activeQuestions.length)];
+            app.questionType = x;
             //SWITCH CASE WILL CHOOSE A RANDOM QUESTION TYPE
             switch(x) {
                 case "placeholder":
