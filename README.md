@@ -1,4 +1,4 @@
-# retrieval.education
+# RETRIEVAL.EDUCATION
 
 This website is a revision tool for anyone studying computer science, but will be most useful for those studying the GCSE and A-Level AQA specifications.
 
