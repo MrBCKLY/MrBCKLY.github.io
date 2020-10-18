@@ -64,14 +64,24 @@ h2 {
     font-weight: 500;
 }
 
+main {
+    display: grid;
+}
+
 #questions {
-    margin: auto;
+    grid-column: 1;
+    grid-row: 1;
+    margin-left: auto;
+    margin-right: auto;
     padding-top: -25px;
     max-width: 600px;
 }
 
 #settings {
-    margin: auto;
+    grid-column: 1;
+    grid-row: 1;
+    margin-left: auto;
+    margin-right: auto;
     padding-top: -25px;
     max-width: 600px;
 }

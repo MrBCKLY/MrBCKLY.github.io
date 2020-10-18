@@ -27,6 +27,14 @@
                             Number base conversions
                         </label>
                         <label for="checkbox">
+                            <input type="checkbox" id="checkbox" v-model="selectQuestions.addition" v-on:change="app.generateQuestion()">
+                            Binary Addition
+                        </label>
+                        <label for="checkbox">
+                            <input type="checkbox" id="checkbox" v-model="selectQuestions.shift" v-on:change="app.generateQuestion()">
+                            Binary Shifts
+                        </label>
+                        <label for="checkbox">
                             <input type="checkbox" id="checkbox" v-model="selectQuestions.bitmap" v-on:change="app.generateQuestion()">
                             Bitmap files
                         </label>
@@ -53,6 +61,6 @@
                 <p class="switch" v-if="show == 2" v-on:click="show = 1">Back to questions</p>
             </footer>
         </div>
-        <script src="questionGenerator.js"></script>
+        <script src="GCSEQuestionGenerator.js"></script>
     </body>
 </html>

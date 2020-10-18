@@ -41,7 +41,12 @@ var obj = {
             unsigned : true,
             twosComplement: true,
             fixedPoint: true,
-            floatingPoint: true
+            floatingPoint: true,
+            addition: true,
+            multiplication: true,
+            bitmap: true,
+            sound: true,
+            logic: true,
         },
     activeQuestions: [
         
@@ -53,13 +58,44 @@ var app = new Vue({
     el: '#content',
     data: obj,
     methods: {
+        generateBinaryMultiplicationQuestion: function() {
+            //CREATE TWO VALUES, ONE UP TO 7 BITS AND ANOTHER UP TO 3 BITS LONG
+            var decimal1 = Math.floor(Math.random() * (Math.pow(2, 7))+1);
+            var decimal2 = Math.floor(Math.random() * (Math.pow(2, 3))+1);
+            //CALCULATE THE ANSWER IN DECIMAL
+            var answer = decimal1 * decimal2;
+            //CONVERT EVERYTHING TO UNSIGNED BINARY
+            var binary1 = decimal1.toString(2);
+            var binary2 = decimal2.toString(2);
+            answer = answer.toString(2);
+            //GENERATE QUESTIONS
+            app.questionValue = "Calculate " + binary1 + " * " + binary2 + ".";
+            app.answerValue = answer;
+            app.extraHelp = "Both values are unsigned binary. Your answer should be in unsigned binary."
+        },
+
+        generateBinaryAdditionQuestion: function() {
+            //CREATE TWO VALUES UP TO 8-BITS LONG
+            var decimal1 = Math.floor(Math.random() * (Math.pow(2, 8))+1);
+            var decimal2 = Math.floor(Math.random() * (Math.pow(2, 8))+1);
+            //CALCULATE ANSWER IN DECIMAL
+            var answer = decimal1 + decimal2;
+            //CONVERT EVERYTHING TO UNSIGNED BINARY
+            var binary1 = decimal1.toString(2);
+            var binary2 = decimal2.toString(2);
+            answer = answer.toString(2);
+            //GENERATE QUESTIONS
+            app.questionValue = "Calculate " + binary1 + " + " + binary2 + ".";
+            app.answerValue = answer;
+            app.extraHelp = "Both values are unsigned binary. Your answer should be in unsigned binary."
+        },
 
         generateLogicQuestion: function() {
             //CREATE TWO RANDOM BOOLEAN VALUES
             var a = Math.random() >= 0.5;
             var b = Math.random() >= 0.5;
             //USE RANDOM NUMBER TO DETERMINE QUESTION TYPE
-            x = Math.floor(Math.random() * 4);
+            x = Math.floor(Math.random() * 6);
             switch(x) {
                 case 0:
                     //AND
@@ -80,6 +116,16 @@ var app = new Vue({
                     //NOT
                     app.questionValue = "The value " + (a ? 1 : 0) + ' is to be input into a NOT logic gate. What will be outputted?';
                     app.answerValue = (!a ? 1 : 0).toString();
+                    break;
+                case 4:
+                    //NOR
+                    app.questionValue = "The values " + (a ? 1 : 0) + ' and ' + (b ? 1 : 0) +' are to be input into an NOR logic gate. What will be outputted?';
+                    app.answerValue = (!(a | b) ? 1 : 0).toString();
+                    break;
+                case 5:
+                    //NAND
+                    app.questionValue = "The values " + (a ? 1 : 0) + ' and ' + (b ? 1 : 0) +' are to be input into an NAND logic gate. What will be outputted?';
+                    app.answerValue = (!(a & b) ? 1 : 0).toString();
                     break;
             }
         },
@@ -518,6 +564,21 @@ var app = new Vue({
             if(app.selectQuestions.floatingPoint) {
                 app.activeQuestions.push("floatingPoint");
             }
+            if(app.selectQuestions.addition) {
+                app.activeQuestions.push("addition");
+            }
+            if(app.selectQuestions.multiplication) {
+                app.activeQuestions.push("multiplication");
+            }
+            if(app.selectQuestions.bitmap) {
+                app.activeQuestions.push("bitmap");
+            }
+            if(app.selectQuestions.sound) {
+                app.activeQuestions.push("sound");
+            }
+            if(app.selectQuestions.logic) {
+                app.activeQuestions.push("logic");
+            }
             //CHECK IF NO CHECKBOXES ARE CHECKED
             if(app.activeQuestions.length == 0) {
                 //APPEND PLACEHOLDER THAT WILL BE USED TO DISPLAY INSTRUCTION LATER
@@ -558,6 +619,27 @@ var app = new Vue({
                     //FLOATING POINT CONVERSION QUESTION
                     app.generateFloatingPointQuestion();
                     break;
+                case "addition":
+                    //BINARY ADDITION QUESTION
+                    app.generateBinaryAdditionQuestion();
+                    break;
+                case "multiplication":
+                    //BINARY MULTIPLCATION QUESTION
+                    app.generateBinaryMultiplicationQuestion();
+                    break;
+                case "bitmap":
+                    //BITMAP FILE SIZE QUESTION
+                    app.generateBitmapQuestion();
+                    break;
+                case "sound":
+                    //SOUND FILE SIZE QUESTION
+                    app.generateSoundQuestion();
+                    break;
+                case "logic":
+                    //LOGIC GATE QUESTION
+                    app.generateLogicQuestion();
+                    break;
+
             }
         },
 

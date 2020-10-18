@@ -39,6 +39,26 @@
                             <input type="checkbox" id="checkbox" v-model="selectQuestions.floatingPoint" v-on:change="app.generateQuestion()">
                             Floating Point
                         </label>
+                        <label for="checkbox">
+                            <input type="checkbox" id="checkbox" v-model="selectQuestions.addition" v-on:change="app.generateQuestion()">
+                            Binary Addition
+                        </label>
+                        <label for="checkbox">
+                            <input type="checkbox" id="checkbox" v-model="selectQuestions.multiplication" v-on:change="app.generateQuestion()">
+                            Binary Multiplication
+                        </label>
+                        <label for="checkbox">
+                            <input type="checkbox" id="checkbox" v-model="selectQuestions.bitmap" v-on:change="app.generateQuestion()">
+                            Bitmap Images
+                        </label>
+                        <label for="checkbox">
+                            <input type="checkbox" id="checkbox" v-model="selectQuestions.sound" v-on:change="app.generateQuestion()">
+                            Sampled Sound
+                        </label>
+                        <label for="checkbox">
+                            <input type="checkbox" id="checkbox" v-model="selectQuestions.logic" v-on:change="app.generateQuestion()">
+                            Logic Gates
+                        </label>
                         <h5 class="subtitle">What is this?</h5>
                         <p class="text">This website creates data representation questions for A-Level Computer Science students studying the AQA specification. The checkboxes above allow you to choose which questions to answer. Use the link at the top left of the window to get back to the questions.</p>
                         <a href="gcse.html"><p style="font-size: 0.5em;"><i>GCSE Questions</i></p></a>
