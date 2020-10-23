@@ -467,7 +467,8 @@ var app = new Vue({
                 app.activeQuestions.push("sound");
             }
             if(app.selectQuestions.keyword) {
-                app.activeQuestions.push("keyword");
+                //QUESTION TYPE REMOVED FOR NOW
+                //app.activeQuestions.push("keyword");
             }
             if(app.selectQuestions.logic) {
                 app.activeQuestions.push("logic");
