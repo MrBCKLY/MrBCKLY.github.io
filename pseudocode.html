@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PSEUDOCODE</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../theme.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </head>
+    <body>
+        <header>
+            <h1>PSEUDOCODE</h1>
+        </header>
+        <div id="content">
+            <main>
+                <transition name="fade">
+                    <section  v-if="show" class="viewport">
+                        <p>The figure below shows some pseudocode. Trace the algorithm and calculate what will be outputted.</p>
+                        <pre>
+                            <code v-html="code"> 
+                            </code>
+                        </pre>
+                        <form onsubmit="return app.checkAnswer()" autocomplete="off">
+                            <input autocomplete="off" id="answer" v-model="attempt" placeholder="Answer" onclick="disablePlaceholder()">
+                        </form>
+                        <p class="score"> {{ streak }} </p>
+                    </section>
+                </transition>
+                <transition name="fade">
+                    <section v-if="!show" class="viewport">
+                        <p>Pseudocode is a method of writing up a set of instructions for a computer program using plain English. It is commonly used to plan a program before any coding starts or to debug a logical error.</p>
+                        <p>Pseudocode is language independent, which means that anyone that knows how to program should be able to read pseudocode and have an idea of what the writer was trying to achieve.</p>
+                        <p>You should be able to read these algorithms and calculate what will have been outputted once the program is run. The outputs concatenate together, which means they are joined end to start with no additional characters inserted between them, such as a space.</p>
+                        <pre>
+                            <code>OUTPUT 'Hello'<br>OUTPUT 'world!'<br>This would result as 'HelloWorld!'</code>
+                        </pre>
+                    </section>
+                </transition>
+                <p class="transitionButton" v-if="show" v-on:click="show = !show">Help</p>
+                <p class="transitionButton" v-if="!show" v-on:click="show = !show">Back to questions</p>
+            </main>
+        </div>
+        <script src="pseudocode.js"></script>
+    </body>
+</html>
