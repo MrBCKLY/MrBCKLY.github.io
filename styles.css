@@ -1,0 +1,112 @@
+/**
+Colour scheme help from https://www.radix-ui.com/colors 
+**/
+
+:root {
+    --appBackground: hsl(146 30.0% 7.4%);
+    --subtleBackground: hsl(136 33.3% 8.8%);
+    --elementBackground: hsl(137 36.0% 11.4%);
+    --elementHoverBackground: hsl(137 37.6% 13.7%);
+    --elementActiveBackground: hsl(136 38.7% 16.0%);
+    --subtleBorder: hsl(135 39.6% 19.1%);
+    --elementBorder: hsl(134 40.3% 23.8%);
+    --elementHoverBorder: hsl(131 40.1% 30.8%);
+    --solidBackground: hsl(131 41.0% 46.5%);
+    --solidHoverBackground: hsl(131 39.0% 52.1%);
+    --lowContrastText: hsl(131 43.0% 57.2%);
+    --highContrastText: hsl(137 72.0% 94.0%);
+}
+
+body {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    background-color: var(--appBackground);
+    color: var(--highContrastText);
+    font-family: 'Questrial', sans-serif;
+    margin-top: 200px;
+    margin-left: 100px;
+}
+
+#avatar {
+    width: 360px;
+    height: 360px;
+}
+
+h1 {
+    font-size: 108px;
+    color: var(--lowContrastText);
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 20px;
+}
+
+a:link {
+    color: var(--highContrastText);
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--highContrastText);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+header {
+    min-width: 400px;
+    text-align: left;
+    margin: 32px;
+    padding: 32px;
+}
+
+main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.tile {
+    width: 350px;
+    height: 175px;
+    background-color: var(--elementBackground);
+    margin: 16px;
+    padding: 8px 32px 8px 32px;
+    border: 1px solid var(--elementBorder);
+    box-shadow: 0px 0px 0px rgb(0 0 0 / 0%);
+    transition: 0.4s ease-in-out;
+    transform: scale(1);
+}
+
+.tile:hover {
+    cursor: pointer;
+    border: 1px solid var(--elementHoverBorder);
+    background-color: var(--elementHoverBackground);
+    box-shadow: 0px 15px 35px rgb(0, 0, 0, 0.06);
+    transform: scale(1.03);
+}
+
+h3 {
+    font-size: 24px;
+}
+
+@media screen and (max-width: 992px) {
+    body {
+        flex-flow: column nowrap;
+        margin-top: 50px;
+        margin-left: auto;
+    }
+
+    .tile {
+        width: 300px;
+    }
+
+    #avatar {
+        width: 180px;
+        height: 180px;
+    }
+}
